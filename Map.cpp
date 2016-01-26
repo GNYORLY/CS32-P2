@@ -122,13 +122,36 @@ bool Map::contains(const KeyType& key) const
 	return (p != nullptr);
 }
 
-/*
 bool Map::get(const KeyType& key, ValueType& value) const
-{}
+{
+	if (contains(key))
+	{
+		Node* p;
+		for (p = head; p->m_key != key; p = p->m_next);
+		value = p->m_value;
+		return true;
+	}
+	else
+		return false;
+}
+
 
 bool Map::get(int i, KeyType& key, ValueType& value) const
-{}
+{
+	if (i > 0 && i <= size())
+	{
+		int k;
+		Node* p;
+		for (p = head, k = 1; k != i; p = p->m_next, k++);
+		key = p->m_key;
+		value = p->m_value;
+		return true;
+	}
+	else
+		return false;
+}
 
+/*
 void Map::swap(Map& other)
 {}
 
@@ -142,20 +165,27 @@ void subtract(const Map& m1, const Map& m2, Map& result)
 
 int main()
 {
+	int x;
 	Map cool;
 	if (cool.empty())
 		cout << "empty" << endl;
 	cool.insertOrUpdate(500, 5);
 	cool.insertOrUpdate(23543, 90);
 	cool.insertOrUpdate(79979, 6464);
+	if (cool.size() == 3)
+		cout << "size 3" << endl;
 	cool.erase(500);
 	if (cool.contains(79979))
 		cout << "here" << endl;
 	if (!cool.contains(500))
 		cout << "not here" << endl;
+	cool.get(23543, x);
+	cout << x << endl;
 	if (cool.size() == 2)
 		cout << "size 2" << endl;
 	cool.insertOrUpdate(23543, 6999);
+	cool.get(23543, x);
+	cout << x << endl;
 	if (cool.size() == 2)
 		cout << "size 2" << endl;
 	cool.erase(23543);
