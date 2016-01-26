@@ -1,6 +1,5 @@
 #include "Map.h"
 #include <iostream>
-#include <string>
 using namespace std;
 
 Map::Map()
@@ -165,33 +164,33 @@ void subtract(const Map& m1, const Map& m2, Map& result)
 
 int main()
 {
-	int x;
+	double x;
 	Map cool;
 	if (cool.empty())
 		cout << "empty" << endl;
-	cool.insertOrUpdate(500, 5);
-	cool.insertOrUpdate(23543, 90);
-	cool.insertOrUpdate(79979, 6464);
+	cool.insertOrUpdate("tree", 5);
+	cool.insertOrUpdate("phylogeny", 90);
+	cool.insertOrUpdate("cream cheese", 6464);
 	if (cool.size() == 3)
 		cout << "size 3" << endl;
-	cool.erase(500);
-	if (cool.contains(79979))
+	cool.erase("tree");
+	if (cool.contains("cream cheese"))
 		cout << "here" << endl;
-	if (!cool.contains(500))
+	if (!cool.contains("tree"))
 		cout << "not here" << endl;
-	cool.get(23543, x);
+	cool.get("phylogeny", x);
 	cout << x << endl;
 	if (cool.size() == 2)
 		cout << "size 2" << endl;
-	cool.insertOrUpdate(23543, 6999);
-	cool.get(23543, x);
+	cool.insertOrUpdate("phylogeny", 6999);
+	cool.get("phylogeny", x);
 	cout << x << endl;
 	if (cool.size() == 2)
 		cout << "size 2" << endl;
-	cool.erase(23543);
+	cool.erase("phylogeny");
 	if (cool.size() == 1)
 		cout << "size 1" << endl;
-	cool.erase(79979);
+	cool.erase("cream cheese");
 	if (cool.size() == 0)
 		cout << "size 0" << endl;
 	if (cool.empty())
