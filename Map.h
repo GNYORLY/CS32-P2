@@ -1,9 +1,10 @@
 //Map.h
 #ifndef MAP_INCLUDED
 #define MAP_INCLUDED
+#include <string>
 
-typedef int KeyType;
-typedef int ValueType;
+typedef std::string KeyType;
+typedef double ValueType;
 
 class Map
 {
@@ -18,10 +19,10 @@ public:
 	bool update(const KeyType& key, const ValueType& value); 
 	bool insertOrUpdate(const KeyType& key, const ValueType& value);
 	bool erase(const KeyType& key); 
-	bool contains(const KeyType& key) const; /*
+	bool contains(const KeyType& key) const; 
 	bool get(const KeyType& key, ValueType& value) const;
 	bool get(int i, KeyType& key, ValueType& value) const;
-	void swap(Map& other); */
+	//void swap(Map& other); 
 private:
 	struct Node
 	{
